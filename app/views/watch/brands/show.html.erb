@@ -9,7 +9,7 @@
 
   <%= render @watch_brand %>
 
-  <%= link_to "Edit this brand", edit_watch_brand_path(@watch_brand), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= link_to "Back to brands", watch_brands_path, class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-  <%= button_to "Destroy this brand", @watch_brand, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+  <%= link_to "Edit this brand", edit_watch_brand_path(@watch_brand), class: "btn" %>
+  <%= link_to "Back to brands", watch_brands_path, class: "btn" %>
+  <%= button_to "Destroy this brand", @watch_brand, method: :delete, form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2", class: "btn-danger", data: { turbo_confirm: "Are you sure?" } %>
 </div>

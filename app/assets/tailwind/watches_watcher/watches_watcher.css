@@ -1,6 +1,10 @@
 @layer components {
-  .button-cta {
+  .btn-cta {
     @apply btn btn-primary;
+  }
+
+  .btn-danger {
+    @apply btn btn-error;
   }
 }
 
