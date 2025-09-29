@@ -1,0 +1,2 @@
+module Watch::BrandsHelper
+end
