@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_29_055310) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_29_072214) do
   create_table "watch_brands", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_watch_brands_on_name", unique: true
   end
 end

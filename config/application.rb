@@ -23,5 +23,9 @@ module WatchesWatcher
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # SEFO: This are standard settings that I changed to allow showing the error messages for the trade form. It worth to get back to this later and understand how to achieve the same without disabling these settings.
+    # config.action_dispatch.rescue_responses.delete "ActiveRecord::RecordInvalid"
+    # config.action_dispatch.rescue_responses.delete "ActiveRecord::RecordNotSaved"
   end
 end
