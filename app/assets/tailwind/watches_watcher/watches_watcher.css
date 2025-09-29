@@ -1,0 +1,6 @@
+@layer components {
+  .button-cta {
+    @apply btn btn-primary;
+  }
+}
+
