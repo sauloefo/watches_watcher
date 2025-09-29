@@ -1,0 +1,6 @@
+[ -f .ruby-version ] && rbenv install --skip-existing
+
+if [ -f bin/bundle ]; then
+  bin/bundle config set silence_root_warning 1
+  bin/bundle
+fi

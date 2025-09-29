@@ -1,0 +1,36 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <production-backup-name> <new-user-email> <new-password>"
+  echo "Example: $0 b001 test@gmail.com mypassword123"
+  exit 1
+fi
+
+if [ -z "$2" ]; then
+  echo "Usage: $0 <production-backup-name> <new-user-email> <new-password>"
+  echo "Example: $0 b001 test@gmail mypassword123"
+  exit 1
+fi
+
+if [ -z "$3" ]; then
+  echo "Usage: $0 <production-backup-name> <new-user-email> <new-password>"
+  echo "Example: $0 b001 test@gmail.com mypassword123"
+  exit 1
+fi
+
+bkp_name=$1
+new_user_email=$2
+new_password=$3
+
+echo "===> Restoring production backup '$bkp_name' into staging..."
+
+heroku pg:backups:restore mcio-production::${bkp_name} DATABASE_URL --app mcio-staging --confirm mcio-staging
+
+echo "===> Updating ar_internal_metadata ..."
+heroku pg:psql --app mcio-staging -c "UPDATE ar_internal_metadata SET value='staging' WHERE key='environment';"
+
+echo "===> Running command to update user credentials..."
+
+heroku run --app mcio-staging -- rails runner "User.last.update_columns(email_address: \"${new_user_email}\", password_digest: BCrypt::Password.create(\"${new_password}\"))"
+
+echo "===> Done!"

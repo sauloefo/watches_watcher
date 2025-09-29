@@ -1,0 +1,3 @@
+if [ -d .githooks ]; then
+  git config --local core.hooksPath .githooks/
+fi

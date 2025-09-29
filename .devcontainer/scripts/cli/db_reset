@@ -1,0 +1,15 @@
+#!/bin/bash
+
+mcio_database_name="mcio_development"
+
+echo "===> Killing all active connections to the database..."   
+psql -h localhost -U root -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname IN ('mcio_development', 'mcio_test');"
+
+echo "===> Resetting database ..."
+bin/rails db:reset
+
+echo "===> Populating USD exchange rates for the current month ..."
+
+bin/rake usd_exchange_rates:populate_year_month[,"eur.fiat brl.fiat gbp.fiat btc.crypto eth.crypto ltc.crypto"]
+
+echo "===> Done."

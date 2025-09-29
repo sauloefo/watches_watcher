@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "===> Backing up Heroku production database..."
+heroku pg:backups:capture --app mcio-production
+
+echo "===> Downloading the backup locally..."
+backup_filename="${project_folder}/tmp/database_backups/production_$(date +%Y%m%d_%H%M%S).dump"
+heroku pg:backups:download --app mcio-production --output="${backup_filename}"
+
+source "${project_folder}/.devcontainer/scripts/cli/db_restore_last_dump_in_local"

@@ -1,0 +1,59 @@
+{
+  "name": "watches_watcher",
+  "dockerFile": "Dockerfile",
+  "initializeCommand": ".devcontainer/scripts/lifecycle-hooks/initialize",
+  "onCreateCommand": ".devcontainer/scripts/lifecycle-hooks/on-create",
+  "containerEnv": {
+    "PATH": "${containerWorkspaceFolder}/.devcontainer/scripts/cli:${env:PATH}",
+    "PGPASSWORD": "root",
+    "project_folder": "${containerWorkspaceFolder}"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.associations": {
+          "*.css": "tailwindcss"
+        },
+        "tailwindCSS.includeLanguages": {
+          "javascript": "javascript",
+          "html": "html",
+          "css": "css",
+          "erb": "erb"
+        },
+        "tailwindCSS.experimental.classRegex": [
+          "class: [\"|']([^\"|']*)"
+        ],
+        "editor.quickSuggestions": {
+          "strings": true
+        },
+        "emmet.includeLanguages": {
+          "erb": "html",
+          "ruby": "html"
+        },
+        "highlight.regexFlags": "gi",
+        "highlight.regexes": {
+          "(<%(?!#)[\\s\\S]*?%>)": {
+            "decorations": [
+              {
+                "backgroundColor": "#f0d8021c"
+              }
+            ]
+          }
+        }
+      },
+      "extensions": [
+        "aki77.vscode-rails-db-schema",
+        "bradlc.vscode-tailwindcss",
+        "eamodio.gitlens",
+        "fabiospampinato.vscode-highlight",
+        "ghbozz.hashtag",
+        "kaiwood.endwise",
+        "ms-azuretools.vscode-docker",
+        "shanehofstetter.rails-open-partial",
+        "shopify.ruby-extensions-pack",
+        "tavo.rails-schema",
+        "formulahendry.auto-rename-tag"
+      ]
+    }
+  }
+}
