@@ -1,5 +1,6 @@
 class Watch::BrandsController < ApplicationController
   before_action :set_watch_brand, only: %i[ show edit update destroy ]
+  before_action :set_country_options, only: %i[ new edit ]
 
   # GET /watch/brands or /watch/brands.json
   def index
@@ -66,5 +67,21 @@ class Watch::BrandsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def watch_brand_params
       params.expect(watch_brand: [ :name, :country ])
+    end
+
+    def set_country_options
+      @country_options = [
+        { name: "Switzerland" },
+        { name: "Germany" },
+        { name: "Japan" },
+        { name: "United States" },
+        { name: "France" },
+        { name: "Italy" },
+        { name: "United Kingdom" },
+        { name: "Sweden" },
+        { name: "Finland" },
+        { name: "Denmark" },
+        { name: "Norway" }
+      ]
     end
 end
