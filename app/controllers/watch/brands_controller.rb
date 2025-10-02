@@ -65,6 +65,6 @@ class Watch::BrandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def watch_brand_params
-      params.expect(watch_brand: [ :name ])
+      params.expect(watch_brand: [ :name, :country ])
     end
 end
