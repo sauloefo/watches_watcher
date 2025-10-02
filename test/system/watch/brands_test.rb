@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class Watch::BrandsTest < ApplicationSystemTestCase
   setup do
-    @watch_brand = watch_brands(:one)
+    @watch_brand = watch_brands(:omega)
   end
 
   test "visiting the index" do
@@ -14,7 +14,7 @@ class Watch::BrandsTest < ApplicationSystemTestCase
     visit watch_brands_url
     click_on "New brand"
 
-    fill_in "Name", with: @watch_brand.name
+    fill_in "Name", with: @watch_brand.name + "_1"
     click_on "Create Brand"
 
     assert_text "Brand was successfully created"
