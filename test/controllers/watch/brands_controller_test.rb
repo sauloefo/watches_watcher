@@ -2,7 +2,7 @@ require "test_helper"
 
 class Watch::BrandsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @watch_brand = watch_brands(:one)
+    @watch_brand = watch_brands(:omega)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class Watch::BrandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create watch_brand" do
     assert_difference("Watch::Brand.count") do
-      post watch_brands_url, params: { watch_brand: { name: @watch_brand.name } }
+      post watch_brands_url, params: { watch_brand: { name: @watch_brand.name + "_1" } }
     end
 
     assert_redirected_to watch_brand_url(Watch::Brand.last)
