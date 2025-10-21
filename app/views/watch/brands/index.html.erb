@@ -27,18 +27,29 @@
     <% end %>
   </div>
 
-  <div class="join flex-wrap mt-6 mb-12">
-    <%= render "country_filter", country: nil %>
-    <%= render "country_filter", country: "Switzerland" %>
-    <%= render "country_filter", country: "Germany" %>
-    <%= render "country_filter", country: "Japan" %>
-    <%= render "country_filter", country: "United States" %>
-    <%= render "country_filter", country: "France" %>
-    <%= render "country_filter", country: "Italy" %>
-    <%= render "country_filter", country: "United Kingdom" %>
-    <%= render "country_filter", country: "Sweden" %>
-    <%= render "country_filter", country: "Finland" %>
-    <%= render "country_filter", country: "Denmark" %>
-    <%= render "country_filter", country: "Norway" %>
-  </div>
+  <%= render "form", watch_brand: @watch_brand, country_options: @country_options || [] %>
+
+  <%= form_with url: watch_brands_path, method: :get, data: { turbo_frame: "_top", turbo_action: :replace } do |f| %>
+    <%= f.hidden_field :country, value: params[:country], id: "search_country" %>
+
+    <div class="country-buttons">
+      <% countries = [
+        "Switzerland", "Germany", "Japan", "United States", "France",
+        "Italy", "United Kingdom", "Sweden", "Finland", "Denmark", "Norway"
+      ] %>
+
+      <% countries.each do |c| %>
+        <% selected = params[:country] == c %>
+        <button
+          type="submit"
+          name="country"
+          value="<%= c %>"
+          class="country-btn <%= 'selected' if selected %>">
+          <%= c %>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
+
+
 </div>

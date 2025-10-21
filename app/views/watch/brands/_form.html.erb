@@ -33,7 +33,7 @@
   <div class="modal-box">
 
     <fieldset class="grid grid-cols-3">
-      <% @country_options.each_with_index do | option, index| %>
+      <% country_options.each_with_index do | option, index| %>
         <div>
           <%= tag.input type: "radio", name: "country", id: "country_option_#{index}", value: option[:name], checked: watch_brand.country == option[:name], data: { action: "change->country-picker#setFormField" } %>
           <%= tag.label option[:name], for: "country_option_#{index}" %>

@@ -1,9 +1,11 @@
 class Watch::BrandsController < ApplicationController
   before_action :set_watch_brand, only: %i[ show edit update destroy ]
-  before_action :set_country_options, only: %i[ new edit ]
+  before_action :set_country_options, only: %i[ new edit index ]
 
   # GET /watch/brands or /watch/brands.json
   def index
+    @watch_brand = Watch::Brand.new
+
     @watch_brands = if params[:country].present?
       Watch::Brand.where(country: params[:country])
     else
@@ -30,7 +32,7 @@ class Watch::BrandsController < ApplicationController
 
     respond_to do |format|
       if @watch_brand.save
-        format.html { redirect_to @watch_brand, notice: "Brand was successfully created." }
+        format.html { redirect_to watch_brands_path, notice: "Brand was successfully created." }
         format.json { render :show, status: :created, location: @watch_brand }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -74,7 +76,7 @@ class Watch::BrandsController < ApplicationController
     end
 
     def set_country_options
-      @country_options = [
+      @country_options ||= [
         { name: "Switzerland" },
         { name: "Germany" },
         { name: "Japan" },
