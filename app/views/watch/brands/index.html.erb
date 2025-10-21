@@ -29,7 +29,7 @@
 
   <%= render "form", watch_brand: @watch_brand, country_options: @country_options || [] %>
 
-  <%= form_with url: watch_brands_path, method: :get, data: { turbo_frame: "_top", turbo_action: :replace } do |f| %>
+  <%= form_with url: watch_brands_path, method: :get, data: { turbo_action: :replace } do |f| %>
     <%= f.hidden_field :country, value: params[:country], id: "search_country" %>
 
     <div class="country-buttons">
