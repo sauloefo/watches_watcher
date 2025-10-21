@@ -4,7 +4,11 @@ class Watch::BrandsController < ApplicationController
 
   # GET /watch/brands or /watch/brands.json
   def index
-    @watch_brands = Watch::Brand.all
+    @watch_brands = if params[:country].present?
+      Watch::Brand.where(country: params[:country])
+    else
+      Watch::Brand.all
+    end
   end
 
   # GET /watch/brands/1 or /watch/brands/1.json
