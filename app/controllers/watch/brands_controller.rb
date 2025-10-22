@@ -9,6 +9,8 @@ class Watch::BrandsController < ApplicationController
     else
       Watch::Brand.all
     end
+
+    render status: :see_other
   end
 
   # GET /watch/brands/1 or /watch/brands/1.json
