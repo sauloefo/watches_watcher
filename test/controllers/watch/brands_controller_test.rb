@@ -7,7 +7,7 @@ class Watch::BrandsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get watch_brands_url
-    assert_response :see_other
+    assert_response :success
   end
 
   test "should get new" do
