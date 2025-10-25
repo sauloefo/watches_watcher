@@ -1,7 +1,9 @@
-<% # Partial for rendering a single country filter link
+<%
+  # Partial for rendering a single country filter link
   # Expects local variable: country (String or nil for "All Countries")
   is_active = country.nil? ? params[:country].blank? : params[:country] == country
   label = country || "All Countries"
-  path = country.nil? ? watch_brands_path : watch_brands_path(country: country) %>
+  path = country.nil? ? watch_brands_path : watch_brands_path(country: country)
+%>
 
 <%= link_to label, path, class: "btn btn-sm join-item #{is_active ? 'btn-primary' : 'btn'}", data: { turbo_frame: "watch_brands", turbo_action: 'advance' } %>
