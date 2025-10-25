@@ -6,4 +6,4 @@
   path = country.nil? ? watch_brands_path : watch_brands_path(country: country)
 %>
 
-<%= link_to label, path, class: "btn btn-sm join-item #{is_active ? 'btn-primary' : 'btn'}", data: { turbo_frame: "watch_brands", turbo_action: 'advance' } %>
+<%= link_to label, path, class: "btn btn-sm join-item #{is_active ? 'btn-primary' : 'btn'}" %>
