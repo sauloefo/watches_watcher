@@ -60,6 +60,7 @@
         }
       },
       "extensions": [
+        "anthropic.claude-code",
         "aki77.vscode-rails-db-schema",
         "bradlc.vscode-tailwindcss",
         "eamodio.gitlens",
