@@ -53,7 +53,7 @@ EOF
 
 ENV project_files_folder=/tmp/project-files
 
-COPY cp.md *tmp/project-files/.ruby-version "$project_files_folder"/
+COPY .devcontainer/cp.md .devcontainer/tmp/project-files/.ruby-version "$project_files_folder"/
 
 RUN <<EOF
   eval "$(~/.rbenv/bin/rbenv init - --no-rehash bash)"
