@@ -8,7 +8,7 @@
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bin/setup --skip-server",
+  // "postCreateCommand": "bin/setup --skip-server",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {

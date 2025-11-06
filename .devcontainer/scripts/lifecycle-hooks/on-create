@@ -3,5 +3,5 @@
 set -eo pipefail
 
 source .devcontainer/scripts/lib/install-dependencies
-source .devcontainer/scripts/lib/setup-mcio-container
+# source .devcontainer/scripts/lib/setup-mcio-container
 source .devcontainer/scripts/lib/setup-githooks
