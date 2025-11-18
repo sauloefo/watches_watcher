@@ -1,0 +1,4 @@
+# initialize PostgreSQL database
+
+postgres_output=`service postgresql status`
+[ $? -eq 3 ] && service postgresql start

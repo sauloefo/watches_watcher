@@ -1,0 +1,5 @@
+project_files_folder=.devcontainer/tmp/project-files
+
+[ -d "$project_files_folder" ] || mkdir -p "$project_files_folder"
+
+[ -f .ruby-version ] && cp .ruby-version "$project_files_folder"/.ruby-version

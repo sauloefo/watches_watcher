@@ -1,0 +1,16 @@
+cat .devcontainer/scripts/lib/init-postgres >> /etc/bash.bashrc
+
+if [ ! -f .env ]; then
+  cp .devcontainer/.env-dev .env
+fi
+
+mkdir /tmp/devcontainer
+cat .devcontainer/scripts/lib/setup-postgresql.sql >> /tmp/devcontainer/setup-postgresql.sql
+
+service postgresql start
+
+su - postgres -c "psql < /tmp/devcontainer/setup-postgresql.sql"
+
+if [ -f db/schema.rb ]; then
+  bin/rails db:reset
+fi
