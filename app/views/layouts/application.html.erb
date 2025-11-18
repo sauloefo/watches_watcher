@@ -25,6 +25,11 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
+      <% if ENV.fetch("WAWA_SHOW_ENVIRONMENT", true) %>
+        <div class="absolute top-0 right-0 m-2 px-2 py-1 rounded bg-gray-800 text-white text-xs">
+          <%= Rails.env.upcase %>
+        </div>
+      <% end %>
       <%= yield %>
     </main>
   </body>
