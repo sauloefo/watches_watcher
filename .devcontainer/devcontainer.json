@@ -56,5 +56,14 @@
         "anthropic.claude-code"
       ]
     }
+  },
+  "portsAttributes": {
+    "3000": {
+      "label": "Rails Server",
+      "onAutoForward": "openBrowserOnce"
+    },
+    "5432": {
+      "label": "PostgreSQL"
+    }
   }
 }
