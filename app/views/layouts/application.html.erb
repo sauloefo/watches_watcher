@@ -24,15 +24,17 @@
   </head>
 
   <body>
-    <div class="flex p-2 space-x-2 bg-gray-100 fixed top-0 left-0 right-0 z-50">
-      <%= link_to "Jobs", mission_control_jobs_path, target: "blank", class: "rounded pointer p-1 hover:underline" %>
-    </div>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <div class="flex p-2 bg-gray-100 fixed top-0 left-0 right-0 z-50 justify-between">
+      <div class="flex space-x-2">
+        <%= link_to "Jobs", mission_control_jobs_path, target: "blank", class: "rounded pointer p-1 hover:underline" %>
+      </div>
       <% if ENV.fetch("WAWA_SHOW_ENVIRONMENT", true) %>
-        <div class="absolute top-0 right-0 m-2 px-2 py-1 rounded bg-gray-800 text-white text-xs">
+        <div class="px-2 py-1 rounded bg-gray-800 text-white text-xs flex items-center">
           <%= Rails.env.upcase %>
         </div>
       <% end %>
+    </div>
+    <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
   </body>
