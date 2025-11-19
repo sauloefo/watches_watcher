@@ -12,17 +12,22 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-default: &default
+postgresql: &postgresql
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+sqlite: &sqlite
+  adapter: sqlite3
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
-  <<: *default
-  database: watches_watcher_development
+  primary: &primary_development
+    <<: *postgresql
+    database: wawa_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -55,8 +60,9 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: watches_watcher_test
+  primary:
+    <<: *postgresql
+    database: watches_watcher_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -86,7 +92,7 @@ test:
 #
 production:
   primary: &primary_production
-    <<: *default
+    <<: *postgresql
     database: watches_watcher_production
     username: watches_watcher
     password: <%= ENV["WATCHES_WATCHER_DATABASE_PASSWORD"] %>
@@ -94,10 +100,6 @@ production:
     <<: *primary_production
     database: watches_watcher_production_cache
     migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: watches_watcher_production_queue
-    migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
     database: watches_watcher_production_cable
