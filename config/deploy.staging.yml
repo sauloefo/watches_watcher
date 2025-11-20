@@ -17,9 +17,9 @@ servers:
 #
 # Don't use this when deploying to multiple web servers (then you have to terminate SSL at your load balancer).
 #
-# proxy:
-#   ssl: true
-#   host: staging.example.com
+proxy:
+  ssl: true
+  host: watches-watcher.bettercallsaulo.dev
 
 # Build with staging environment
 builder:
