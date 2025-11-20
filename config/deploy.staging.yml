@@ -42,9 +42,8 @@ env:
     # Set number of cores available to the application on each server (default: 1).
     # WEB_CONCURRENCY: 2
 
-    # Match this to any external database server to configure Active Record correctly
-    # Use watches_watcher-db for a db accessory server on same machine via local kamal docker network.
-    PRIMARY_DATABASE_HOST: 127.0.0.1
+    # In lab infrastructure, applications and databases run in separate containers.
+    PRIMARY_DATABASE_HOST: postgresql_container
 
     # Log everything from Rails in staging for debugging
     # RAILS_LOG_LEVEL: debug
