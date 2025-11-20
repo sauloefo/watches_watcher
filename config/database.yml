@@ -28,6 +28,15 @@ development:
   primary: &primary_development
     <<: *postgresql
     database: wawa_development
+  cache:
+    <<: *sqlite
+    database: storage/wawa_development_cache.sqlite3
+    migrations_paths: db/cache_migrate
+  cable:
+    <<: *sqlite
+    database: storage/wawa_development_cable.sqlite3
+    migrations_paths: db/cable_migrate
+
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -98,12 +107,12 @@ staging:
     password: <%= Rails.application.credentials.primary_database_password %>
     host: <%= ENV["PRIMARY_DATABASE_HOST"] %>
   cache:
-    <<: *primary_staging
-    database: wawa_staging_cache
+    <<: *sqlite
+    database: storage/wawa_staging_cache.sqlite3
     migrations_paths: db/cache_migrate
   cable:
-    <<: *primary_staging
-    database: wawa_staging_cable
+    <<: *sqlite
+    database: storage/wawa_staging_cable.sqlite3
     migrations_paths: db/cable_migrate
 
 production:
@@ -114,10 +123,10 @@ production:
     password: <%= Rails.application.credentials.primary_database_password %>
     host: <%= ENV["PRIMARY_DATABASE_HOST"] %>
   cache:
-    <<: *primary_production
-    database: wawa_production_cache
+    <<: *sqlite
+    database: storage/wawa_production_cache.sqlite3
     migrations_paths: db/cache_migrate
   cable:
-    <<: *primary_production
-    database: wawa_production_cable
+    <<: *sqlite
+    database: storage/wawa_production_cable.sqlite3
     migrations_paths: db/cable_migrate
