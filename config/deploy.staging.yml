@@ -52,3 +52,7 @@ env:
 # Separate from production volumes
 volumes:
   - "wawa_staging_storage:/rails/storage"
+
+# Configure readiness check (disable Docker healthcheck requirement)
+readiness_delay: 7
+stop_wait_time: 10
