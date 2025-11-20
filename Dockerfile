@@ -20,8 +20,10 @@ RUN apt-get update -qq && \
     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Set production environment variables and enable jemalloc for reduced memory usage and latency.
-ENV RAILS_ENV="production" \
+# Set production/staging environment variables and enable jemalloc for reduced memory usage and latency.
+# RAILS_ENV can be overridden at build time via --build-arg
+ARG RAILS_ENV=production
+ENV RAILS_ENV="${RAILS_ENV}" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development" \

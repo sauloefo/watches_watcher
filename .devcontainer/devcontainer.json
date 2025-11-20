@@ -57,6 +57,9 @@
       ]
     }
   },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": { "moby": false }
+  },
   "portsAttributes": {
     "3000": {
       "label": "Rails Server",

@@ -62,7 +62,7 @@ development:
 test:
   primary:
     <<: *postgresql
-    database: watches_watcher_test
+    database: wawa_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -90,17 +90,32 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+staging:
+  primary: &primary_staging
+    <<: *postgresql
+    database: wawa_staging
+    username: <%= Rails.application.credentials.primary_database_username %>
+    password: <%= Rails.application.credentials.primary_database_password %>
+  cache:
+    <<: *primary_staging
+    database: wawa_staging_cache
+    migrations_paths: db/cache_migrate
+  cable:
+    <<: *primary_staging
+    database: wawa_staging_cable
+    migrations_paths: db/cable_migrate
+
 production:
   primary: &primary_production
     <<: *postgresql
-    database: watches_watcher_production
-    username: watches_watcher
-    password: <%= ENV["WATCHES_WATCHER_DATABASE_PASSWORD"] %>
+    database: wawa_production
+    username: <%= Rails.application.credentials.primary_database_username %>
+    password: <%= Rails.application.credentials.primary_database_password %>
   cache:
     <<: *primary_production
-    database: watches_watcher_production_cache
+    database: wawa_production_cache
     migrations_paths: db/cache_migrate
   cable:
     <<: *primary_production
-    database: watches_watcher_production_cable
+    database: wawa_production_cable
     migrations_paths: db/cable_migrate
