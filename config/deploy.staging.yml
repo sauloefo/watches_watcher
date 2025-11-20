@@ -1,6 +1,8 @@
 # Staging environment deployment configuration
 # Inherits from config/deploy.yml and overrides specific settings for staging
 
+service: wawa_staging
+
 # Deploy to these staging servers
 servers:
   web:
