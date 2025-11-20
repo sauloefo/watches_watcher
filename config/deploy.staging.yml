@@ -55,3 +55,4 @@ volumes:
 
 # Configure readiness check (disable Docker healthcheck requirement)
 readiness_delay: 7
+stop_wait_time: 10
