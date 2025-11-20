@@ -96,6 +96,7 @@ staging:
     database: wawa_staging
     username: <%= Rails.application.credentials.primary_database_username %>
     password: <%= Rails.application.credentials.primary_database_password %>
+    host: <%= ENV["PRIMARY_DATABASE_HOST"] %>
   cache:
     <<: *primary_staging
     database: wawa_staging_cache
@@ -111,6 +112,7 @@ production:
     database: wawa_production
     username: <%= Rails.application.credentials.primary_database_username %>
     password: <%= Rails.application.credentials.primary_database_password %>
+    host: <%= ENV["PRIMARY_DATABASE_HOST"] %>
   cache:
     <<: *primary_production
     database: wawa_production_cache
