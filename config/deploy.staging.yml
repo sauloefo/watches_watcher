@@ -44,7 +44,7 @@ env:
 
     # Match this to any external database server to configure Active Record correctly
     # Use watches_watcher-db for a db accessory server on same machine via local kamal docker network.
-    PRIMARY_DATABASE_HOST: postgresql_container
+    PRIMARY_DATABASE_HOST: 127.0.0.1
 
     # Log everything from Rails in staging for debugging
     # RAILS_LOG_LEVEL: debug
