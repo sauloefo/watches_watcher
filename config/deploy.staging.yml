@@ -4,7 +4,7 @@
 # Deploy to these staging servers
 servers:
   web:
-    - 46.62.209.116
+    - 77.42.17.246 # lab.htzusd
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -19,7 +19,7 @@ servers:
 #
 proxy:
   ssl: true
-  host: watches-watcher.bettercallsaulo.dev
+  host: staging.watches-watcher.bettercallsaulo.dev
 
 # Build with staging environment
 builder:
