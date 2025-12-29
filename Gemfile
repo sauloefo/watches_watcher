@@ -46,7 +46,7 @@ gem "image_processing", "~> 1.2"
 gem "mission_control-jobs"
 
 # sqlite3 database for cache and cable
-gem "sqlite3", "~> 2.8"
+gem "sqlite3", "~> 2.9"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
